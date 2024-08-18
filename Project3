@@ -1,0 +1,70 @@
+class Phone_Book:
+     def __init__(self):
+          self.contacts = []
+
+     def add_Contact(self, contanct):
+          self.contacts.append(contanct)
+     
+     def search_Customer(self, family):
+        found = False
+        for contact in self.contacts:
+            if contact.family == family:
+                print(contact)
+                found = True
+        if not found:
+            print("Unknown Contact")
+            
+                    
+class Person:
+    def __init__(self, name, family, custumerCode, phone, email):
+        self.name = name
+        self.family = family
+        self.custumerCode = custumerCode
+        self.phone = phone
+        self.email = email
+
+class Address:
+    def __init__(self, city, street, tag):
+            self.city = city
+            self.street = street
+            self.tag = tag
+
+class Contact(Person,Address):
+     def __init__(self, name, family, custumerCode, phone, email, city, street, tag):
+          Person.__init__(self, name, family, custumerCode, phone, email)
+          Address.__init__(self, city, street, tag)
+     def __str__(self):
+          return f"{self.name}\n{self.family}\n{self.custumerCode}\n{self.phone}\n{self.email}\n"
+     
+ph = Phone_Book()
+
+p1 = Contact("Ali", "Ahmadi", 21, 99111, "aliahmadi@gmail.com", "Tehran", "Molavi", 121)
+p2 = Contact("Mehdi", "Rezaii", 22, 91222, "MehdiRezaii@gmail.com", "Isfahan", "Jolfa", 510)
+p3 = Contact("Hossein", "Mohammadi", 23, 91333, "HosseinMohammadi@gmail.com", "Tehran", "Molavi", 213)
+p4 = Contact("Reza", "Bayat", 24, 99000, "RezaBayat@gmail.com", "Tehran", "Barzegar", 960)
+p5 = Contact("Iman", "Momeni", 25, 913, "ImanMomeni@gmail.com", "Tehran", "Shoosh", 543)
+p6 = Contact("Omid", "Shabankhahi", 26, 99111, "OmidShabankhahi@gmail.com", "Tehran", "RahAhan", 435)
+p7 = Contact("Hassan", "Fallah", 27, 99000, "HassanFallah@gmail.com", "Tehran", "Enghelab", 210)
+p8 = Contact("Mohsen", "Rasti", 28, 92111, "MohsenRasti@gmail.com", "Tehran", "taleghani", 101)
+p9 = Contact("Ahmad", "Azad", 29, 92111, "AhmadAzad@gmail.com", "Tehran", "Satarkhan", 921)
+p10 = Contact("Mahmood", "Jalili", 30, 91222, "MahmoodJalili@gmail.com", "Tehran", "Teymoori", 623)
+
+
+ph.add_Contact(p1)
+ph.add_Contact(p2)
+ph.add_Contact(p3)
+ph.add_Contact(p4)
+ph.add_Contact(p5)
+ph.add_Contact(p6)
+ph.add_Contact(p7)
+ph.add_Contact(p8)
+ph.add_Contact(p9)
+ph.add_Contact(p10)
+
+
+ph.search_Customer("Azad")
+ph.search_Customer("Momeni")
+ph.search_Customer("Moosavi")
+ph.search_Customer("Karimi")
+ph.search_Customer("Rezaii")
+ph.search_Customer("Ahmadi")
